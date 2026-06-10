@@ -46,4 +46,21 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post("/login", async (req, res) => {
+  try{
+    const { email, password } = req.body;
+
+    res.json({
+      email,
+      password,
+    });
+  } catch(error) {
+    console.error(error);
+
+    res.status(500).json({
+      massage: "Something went wrong",
+    });
+  }
+});
+
 export default router;
