@@ -8,7 +8,7 @@ import { eq } from "drizzle-orm";
 
 const router = Router();
 
-// ========== ZOD SCHEMAS (Required by Assignment) ==========
+// ========== ZOD SCHEMAS  ==========
 const registerSchema = z.object({
   email: z.string().email("Invalid email format"),
   password: z.string().min(8, "Password must be at least 8 characters"),
@@ -64,7 +64,7 @@ router.post("/register", validate(registerSchema), async (req, res) => {
       });
     }
 
-    // Hash password with 12 rounds (as required)
+    // Hash password 
     const hashedPassword = await bcrypt.hash(password, 12);
     
     // Save user
